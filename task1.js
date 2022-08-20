@@ -4,25 +4,18 @@
 	Вывод: 11
  */
 
-let a = [-1, 10, -9, 5, 6, -10, 3, 4, 5, -2, -4, 4, -3, 16, -3, -4, 6, 8, 8, -3];
+let a = [-1, 10, -9, 5, 6, -10];
 
-
-function sum_even(arr){
-	let array_sum=[];
-	let sum=0;
-	let max_sum=0;
-	arr.forEach((e, i, array)=>{
-		if (e>0){
-			sum+=e;
-		}
-		if(array[i+1] < 0){
-			array_sum.push(sum);
-			sum=0;
+function maxSum(arr) {
+	let sum = 0;
+	let max_sum = 0;
+	arr.forEach((e, index, mas) => {
+		sum += e;
+		if (e + 1 != mas[index + 1]) {
+			max_sum = max_sum < sum ? sum : max_sum;
+			sum = 0
 		}
 	})
-	max_sum=Math.max(...array_sum);
 	return max_sum;
 }
-
-
-console.log (sum_even(a));
+console.log(maxSum(a));
